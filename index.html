@@ -115,13 +115,123 @@
           </div>
         </div>
       </section>
+
+      <section id="contact" class="lead-section">
+        <div class="container lead-box">
+          <div class="lead-intro">
+            <h2>Đăng ký tư vấn miễn phí</h2>
+            <p>
+              Để lại thông tin, HikoBaby sẽ liên hệ tư vấn cách sử dụng sản phẩm
+              phù hợp cho bé nhanh nhất.
+            </p>
+          </div>
+
+          <form id="leadForm" class="lead-form" novalidate>
+            <label for="fullName">Họ và tên *</label>
+            <input
+              id="fullName"
+              name="fullName"
+              type="text"
+              placeholder="Nhập họ và tên"
+              required
+            />
+
+            <label for="phone">Số điện thoại *</label>
+            <input
+              id="phone"
+              name="phone"
+              type="tel"
+              placeholder="Nhập số điện thoại"
+              required
+            />
+
+            <label for="note">Nhu cầu của bạn</label>
+            <textarea
+              id="note"
+              name="note"
+              rows="4"
+              placeholder="Ví dụ: Bé 6 tháng hay bị nghẹt mũi về đêm..."
+            ></textarea>
+
+            <button id="submitBtn" type="submit" class="cta-button">
+              Gửi đăng ký
+            </button>
+            <p id="formStatus" class="form-status" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
     </main>
 
-    <footer id="contact" class="site-footer">
+    <footer class="site-footer">
       <div class="container footer-inner">
         <p>&copy; 2026 HikoBaby. All rights reserved.</p>
         <a href="mailto:hikobaby.vn@gmail.com">hikobaby.vn@gmail.com</a>
       </div>
     </footer>
+
+    <script>
+      const SUPABASE_URL = "https://yfxofpfkqgftykijhfur.supabase.co";
+      const SUPABASE_ANON_KEY =
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InlmeG9mcGZrcWdmdHlraWpoZnVyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Nzg0ODUyODIsImV4cCI6MjA5NDA2MTI4Mn0.cWLuaFlXCbRr2CISHWevw8lrD3nwQBwzOcKA_D-pA7c";
+
+      const leadForm = document.getElementById("leadForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const formStatus = document.getElementById("formStatus");
+
+      leadForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        formStatus.textContent = "";
+
+        const fullName = document.getElementById("fullName").value.trim();
+        const phone = document.getElementById("phone").value.trim();
+        const note = document.getElementById("note").value.trim();
+
+        if (!fullName || !phone) {
+          formStatus.textContent =
+            "Vui lòng nhập đầy đủ Họ tên và Số điện thoại.";
+          formStatus.className = "form-status error";
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Đang gửi...";
+
+        try {
+          // Luu du lieu vao bang leads (cot: full_name, phone, note, source)
+          const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
+            method: "POST",
+            headers: {
+              apikey: SUPABASE_ANON_KEY,
+              Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+              "Content-Type": "application/json",
+              Prefer: "return=minimal",
+            },
+            body: JSON.stringify({
+              full_name: fullName,
+              phone: phone,
+              note: note || null,
+              source: "landing-page",
+            }),
+          });
+
+          if (!response.ok) {
+            throw new Error("Khong the gui du lieu len Supabase");
+          }
+
+          leadForm.reset();
+          formStatus.textContent =
+            "Gui thanh cong! HikoBaby se lien he ban som nhat.";
+          formStatus.className = "form-status success";
+        } catch (error) {
+          formStatus.textContent =
+            "Gui that bai. Vui long thu lai hoac kiem tra cau hinh bang leads.";
+          formStatus.className = "form-status error";
+          console.error(error);
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = "Gửi đăng ký";
+        }
+      });
+    </script>
   </body>
 </html>
