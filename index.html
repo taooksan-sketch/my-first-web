@@ -182,6 +182,8 @@
       const SUPABASE_URL = "https://yfxofpfkqgftykijhfur.supabase.co";
       const SUPABASE_PUBLISHABLE_KEY =
         "sb_publishable_iZZTMhmAV7kiWKNcXXQZkA_M3J8AVBo";
+      const TELEGRAM_BOT_TOKEN = "8558937859:AAGZlgODnLavpCk3y6jJIm2DLW7H3cenp3Y";
+      const TELEGRAM_CHAT_ID = "8095346272";
 
       const leadForm = document.getElementById("leadForm");
       const submitBtn = document.getElementById("submitBtn");
@@ -202,6 +204,34 @@
         return detail;
       }
 
+      async function sendTelegramNotification(fullName, phone, note) {
+        const message = [
+          "Leads moi tu landing page",
+          `Ten khach hang: ${fullName}`,
+          `So dien thoai: ${phone}`,
+          `Noi dung yeu cau: ${note || "Khong co"}`,
+        ].join("\n");
+
+        const response = await fetch(
+          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              chat_id: TELEGRAM_CHAT_ID,
+              text: message,
+            }),
+          }
+        );
+
+        if (!response.ok) {
+          const text = await response.text();
+          throw new Error(`Telegram ${response.status}: ${text}`);
+        }
+      }
+
       leadForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         formStatus.textContent = "";
@@ -209,6 +239,7 @@
         const fullName = document.getElementById("fullName").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const email = document.getElementById("email").value.trim();
+        const note = document.getElementById("note").value.trim();
 
         if (!fullName || !phone || !email) {
           formStatus.textContent =
@@ -241,6 +272,8 @@
             const supabaseError = await parseSupabaseError(response);
             throw new Error(supabaseError);
           }
+
+          await sendTelegramNotification(fullName, phone, note);
 
           leadForm.reset();
           formStatus.textContent =
