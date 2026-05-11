@@ -145,7 +145,16 @@
               required
             />
 
-            <label for="note">Nhu cầu của bạn</label>
+            <label for="email">Email *</label>
+            <input
+              id="email"
+              name="email"
+              type="email"
+              placeholder="Nhập email"
+              required
+            />
+
+            <label for="note">Nhu cầu của bạn (tuỳ chọn)</label>
             <textarea
               id="note"
               name="note"
@@ -199,11 +208,11 @@
 
         const fullName = document.getElementById("fullName").value.trim();
         const phone = document.getElementById("phone").value.trim();
-        const note = document.getElementById("note").value.trim();
+        const email = document.getElementById("email").value.trim();
 
-        if (!fullName || !phone) {
+        if (!fullName || !phone || !email) {
           formStatus.textContent =
-            "Vui lòng nhập đầy đủ Họ tên và Số điện thoại.";
+            "Vui lòng nhập đầy đủ Họ tên, Số điện thoại và Email.";
           formStatus.className = "form-status error";
           return;
         }
@@ -212,7 +221,7 @@
         submitBtn.textContent = "Đang gửi...";
 
         try {
-          // Luu du lieu vao bang leads (cot: full_name, phone, note, source)
+          // Bang leads cua ban: name, phone, email.
           const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
             method: "POST",
             headers: {
@@ -222,10 +231,9 @@
               Prefer: "return=minimal",
             },
             body: JSON.stringify({
-              full_name: fullName,
+              name: fullName,
               phone: phone,
-              note: note || null,
-              source: "landing-page",
+              email: email,
             }),
           });
 
