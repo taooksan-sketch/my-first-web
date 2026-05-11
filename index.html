@@ -178,6 +178,21 @@
       const submitBtn = document.getElementById("submitBtn");
       const formStatus = document.getElementById("formStatus");
 
+      async function parseSupabaseError(response) {
+        let detail = `HTTP ${response.status}`;
+        try {
+          const data = await response.json();
+          if (data?.message) detail += ` - ${data.message}`;
+          if (data?.details) detail += ` | ${data.details}`;
+          if (data?.hint) detail += ` | Hint: ${data.hint}`;
+          if (data?.code) detail += ` | Code: ${data.code}`;
+        } catch (_error) {
+          const text = await response.text();
+          if (text) detail += ` - ${text}`;
+        }
+        return detail;
+      }
+
       leadForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         formStatus.textContent = "";
@@ -215,7 +230,8 @@
           });
 
           if (!response.ok) {
-            throw new Error("Khong the gui du lieu len Supabase");
+            const supabaseError = await parseSupabaseError(response);
+            throw new Error(supabaseError);
           }
 
           leadForm.reset();
@@ -224,7 +240,7 @@
           formStatus.className = "form-status success";
         } catch (error) {
           formStatus.textContent =
-            "Gui that bai. Vui long thu lai hoac kiem tra cau hinh bang leads.";
+            `Gui that bai: ${error.message}`;
           formStatus.className = "form-status error";
           console.error(error);
         } finally {
