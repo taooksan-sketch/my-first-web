@@ -20,7 +20,7 @@
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="#hero">
-          <img src="logo hikobaby.png" alt="HikoBaby" />
+          <span>HikoBaby</span>
         </a>
         <nav class="nav" aria-label="Điều hướng chính">
           <a href="#hero">Trang chủ</a>
@@ -37,7 +37,7 @@
         <div class="container hero-grid">
           <div class="hero-content">
             <p class="eyebrow">SẢN PHẨM CHĂM SÓC BÉ</p>
-            <h1>Hút mũi cho bé an toàn, êm ái, đã được Bộ Y Tế cấp phép</h1>
+            <h1>Hút mũi cho bé an toàn, êm ái, đã được Bộ Y tế cấp phép</h1>
             <p class="hero-description">
               Dụng cụ hút mũi HikoBaby dùng pít-tông khí nén, không cần tra dầu,
               dễ vệ sinh và bền bỉ 3-5 năm. Thiết kế chống trào ngược và có 3 đầu
@@ -49,7 +49,11 @@
             </div>
           </div>
           <div class="hero-media">
-            <img src="1.png" alt="HikoBaby dụng cụ hút mũi cho bé" />
+            <img
+              src="1.png"
+              alt="HikoBaby dụng cụ hút mũi cho bé"
+              loading="eager"
+            />
           </div>
         </div>
       </section>
@@ -119,14 +123,16 @@
       <section id="contact" class="lead-section">
         <div class="container lead-box">
           <div class="lead-intro">
-            <h2>
-              Nhận nga quà tặng cuốn sách mẹ bình tĩnh con an toàn miễn phí khi
-              đăng ký
-            </h2>
+            <h2>Nhận ngay quà tặng sách “Mẹ bình tĩnh, con an toàn” miễn phí</h2>
             <p>
               Để lại thông tin để nhận tư vấn và quà tặng. Thông tin sản phẩm và
               chương trình quà tặng được cập nhật tại
-              <a href="https://www.hikobaby.vn/" target="_blank" rel="noopener noreferrer">hikobaby.vn</a>.
+              <a
+                href="https://www.hikobaby.vn/"
+                target="_blank"
+                rel="noopener noreferrer"
+                >hikobaby.vn</a
+              >.
             </p>
           </div>
 
@@ -278,11 +284,11 @@
 
       async function sendTelegramNotification(fullName, phone, note, category) {
         const message = [
-          "Leads moi tu landing page",
-          `Ten khach hang: ${fullName}`,
-          `So dien thoai: ${phone}`,
-          `Noi dung yeu cau: ${note || "Khong co"}`,
-          `Muc do quan tam: ${category}`,
+          "Lead mới từ landing page HikoBaby",
+          `Tên khách hàng: ${fullName}`,
+          `Số điện thoại: ${phone}`,
+          `Nội dung yêu cầu: ${note || "Không có"}`,
+          `Mức độ quan tâm: ${category}`,
         ].join("\n");
 
         const response = await fetch(
@@ -305,6 +311,51 @@
         }
       }
 
+      async function insertLead(fullName, phone, email, note, category) {
+        const endpoint = `${SUPABASE_URL}/rest/v1/leads`;
+        const headers = {
+          apikey: SUPABASE_PUBLISHABLE_KEY,
+          Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
+          "Content-Type": "application/json",
+          Prefer: "return=minimal",
+        };
+
+        const primaryPayload = {
+          name: fullName,
+          phone: phone,
+          email: email,
+          note: note || null,
+          category: category,
+        };
+
+        let response = await fetch(endpoint, {
+          method: "POST",
+          headers,
+          body: JSON.stringify(primaryPayload),
+        });
+
+        if (response.ok) return;
+
+        const firstError = await parseSupabaseError(response);
+
+        // Fallback khi bảng leads chưa có cột note.
+        if (firstError.includes("Could not find the 'note' column")) {
+          response = await fetch(endpoint, {
+            method: "POST",
+            headers,
+            body: JSON.stringify({
+              name: fullName,
+              phone: phone,
+              email: email,
+              category: category,
+            }),
+          });
+          if (response.ok) return;
+        }
+
+        throw new Error(await parseSupabaseError(response));
+      }
+
       leadForm.addEventListener("submit", async (event) => {
         event.preventDefault();
         formStatus.textContent = "";
@@ -320,6 +371,12 @@
           formStatus.className = "form-status error";
           return;
         }
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+          formStatus.textContent = "Email chưa đúng định dạng. Vui lòng kiểm tra lại.";
+          formStatus.className = "form-status error";
+          return;
+        }
 
         submitBtn.disabled = true;
         submitBtn.textContent = "Đang gửi...";
@@ -327,38 +384,16 @@
         try {
           const category = classifyLeadCategory(note);
 
-          // Bang leads cua ban: name, phone, email.
-          const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
-            method: "POST",
-            headers: {
-              apikey: SUPABASE_PUBLISHABLE_KEY,
-              Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-              "Content-Type": "application/json",
-              Prefer: "return=minimal",
-            },
-            body: JSON.stringify({
-              name: fullName,
-              phone: phone,
-              email: email,
-              note: note || null,
-              category: category,
-            }),
-          });
-
-          if (!response.ok) {
-            const supabaseError = await parseSupabaseError(response);
-            throw new Error(supabaseError);
-          }
+          await insertLead(fullName, phone, email, note, category);
 
           await sendTelegramNotification(fullName, phone, note, category);
 
           leadForm.reset();
           formStatus.textContent =
-            "Gui thanh cong! HikoBaby se lien he ban som nhat.";
+            "Gửi thành công! HikoBaby sẽ liên hệ bạn sớm nhất.";
           formStatus.className = "form-status success";
         } catch (error) {
-          formStatus.textContent =
-            `Gui that bai: ${error.message}`;
+          formStatus.textContent = `Gửi thất bại: ${error.message}`;
           formStatus.className = "form-status error";
           console.error(error);
         } finally {

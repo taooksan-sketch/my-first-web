@@ -54,10 +54,11 @@ body {
   text-decoration: none;
 }
 
-.logo img {
-  height: 42px;
-  width: auto;
-  display: block;
+.logo span {
+  color: var(--primary-dark);
+  font-weight: 800;
+  font-size: 1.6rem;
+  letter-spacing: -0.02em;
 }
 
 .nav {
@@ -247,6 +248,7 @@ body {
   border-radius: 14px;
   border: 1px solid var(--border);
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+  background: #ffffff;
 }
 
 .lead-section {
@@ -273,6 +275,11 @@ body {
 .lead-intro p {
   margin: 0;
   color: var(--muted);
+}
+
+.lead-intro a {
+  color: var(--primary-dark);
+  font-weight: 600;
 }
 
 .lead-form {
