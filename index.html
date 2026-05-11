@@ -204,12 +204,81 @@
         return detail;
       }
 
-      async function sendTelegramNotification(fullName, phone, note) {
+      function classifyLeadCategory(note) {
+        const normalized = (note || "").toLowerCase().trim();
+        if (!normalized) return "Cold";
+
+        const hotKeywords = [
+          "mua ngay",
+          "chot",
+          "chốt",
+          "gia",
+          "giá",
+          "bao nhieu",
+          "bao nhiêu",
+          "ship ngay",
+          "giao ngay",
+          "can gap",
+          "cần gấp",
+          "gap",
+          "khẩn cấp",
+          "nghet mui",
+          "nghẹt mũi",
+          "be khoc",
+          "bé khóc",
+        ];
+
+        const warmKeywords = [
+          "tu van",
+          "tư vấn",
+          "tim hieu",
+          "tìm hiểu",
+          "xin thong tin",
+          "thong tin",
+          "hướng dẫn",
+          "huong dan",
+          "so sanh",
+          "cach dung",
+          "cách dùng",
+          "review",
+        ];
+
+        const coldKeywords = [
+          "mien phi",
+          "miễn phí",
+          "qua tang",
+          "quà tặng",
+          "cho vui",
+          "tham khao",
+          "tham khảo",
+          "test",
+          "hello",
+          "ok",
+        ];
+
+        const hotScore = hotKeywords.filter((keyword) =>
+          normalized.includes(keyword)
+        ).length;
+        const warmScore = warmKeywords.filter((keyword) =>
+          normalized.includes(keyword)
+        ).length;
+        const coldScore = coldKeywords.filter((keyword) =>
+          normalized.includes(keyword)
+        ).length;
+
+        if (hotScore > 0 || normalized.length > 80) return "Hot";
+        if (warmScore > 0) return "Warm";
+        if (coldScore > 0 || normalized.length < 10) return "Cold";
+        return "Warm";
+      }
+
+      async function sendTelegramNotification(fullName, phone, note, category) {
         const message = [
           "Leads moi tu landing page",
           `Ten khach hang: ${fullName}`,
           `So dien thoai: ${phone}`,
           `Noi dung yeu cau: ${note || "Khong co"}`,
+          `Muc do quan tam: ${category}`,
         ].join("\n");
 
         const response = await fetch(
@@ -252,6 +321,8 @@
         submitBtn.textContent = "Đang gửi...";
 
         try {
+          const category = classifyLeadCategory(note);
+
           // Bang leads cua ban: name, phone, email.
           const response = await fetch(`${SUPABASE_URL}/rest/v1/leads`, {
             method: "POST",
@@ -265,6 +336,8 @@
               name: fullName,
               phone: phone,
               email: email,
+              note: note || null,
+              category: category,
             }),
           });
 
@@ -273,7 +346,7 @@
             throw new Error(supabaseError);
           }
 
-          await sendTelegramNotification(fullName, phone, note);
+          await sendTelegramNotification(fullName, phone, note, category);
 
           leadForm.reset();
           formStatus.textContent =
