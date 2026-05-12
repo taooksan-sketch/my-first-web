@@ -1,0 +1,77 @@
+{
+  "project": "HikoBaby Knowledge Brain",
+  "version": "1.0.0",
+  "updated_at": "2026-05-11",
+  "schema": [
+    "Câu hỏi/Chủ đề",
+    "Nội dung chi tiết",
+    "Lưu ý khi tư vấn"
+  ],
+  "knowledge": [
+    {
+      "Câu hỏi/Chủ đề": "HikoBaby là sản phẩm gì?",
+      "Nội dung chi tiết": "HikoBaby là dụng cụ hút mũi cho bé, hỗ trợ làm sạch dịch nhầy và đờm trong mũi để bé thở dễ hơn. Sản phẩm dùng pít-tông khí nén, không dùng lò xo, không cần tra dầu.",
+      "Lưu ý khi tư vấn": "Nhấn mạnh tính an toàn, dễ thao tác tại nhà và phù hợp cho phụ huynh có con nhỏ hay bị nghẹt mũi."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Ưu điểm nổi bật của HikoBaby",
+      "Nội dung chi tiết": "Thiết kế chống trào ngược, đầu hút silicone mềm mại, không chứa BPA, dễ vệ sinh và độ bền cao (3-5 năm theo thông tin sản phẩm).",
+      "Lưu ý khi tư vấn": "So sánh ngắn gọn với sản phẩm lò xo: dễ bám bẩn, khó vệ sinh, xuống cấp nhanh."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Sản phẩm có phù hợp cho nhiều độ tuổi không?",
+      "Nội dung chi tiết": "Có. Bộ sản phẩm có 3 đầu hút thay thế, phù hợp từng độ tuổi và từng tình trạng dịch mũi.",
+      "Lưu ý khi tư vấn": "Hỏi tuổi của bé trước để gợi ý đầu hút phù hợp, tránh tư vấn chung chung."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Cách sử dụng nhanh",
+      "Nội dung chi tiết": "Nhỏ 2-3 giọt nước muối sinh lý -> đặt đầu hút mềm vào mũi bé -> bóp tay để hút dịch -> vệ sinh/tiệt trùng sau khi dùng.",
+      "Lưu ý khi tư vấn": "Giải thích thao tác nhẹ nhàng, không đưa đầu hút quá sâu, dừng khi bé khó chịu."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Vệ sinh và bảo quản",
+      "Nội dung chi tiết": "Tháo rời các bộ phận sau mỗi lần dùng, rửa sạch và có thể tiệt trùng bằng nước sôi/hơi nước/tia UV.",
+      "Lưu ý khi tư vấn": "Nhấn mạnh việc vệ sinh định kỳ để đảm bảo an toàn cho bé."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Khi nào nên dùng HikoBaby?",
+      "Nội dung chi tiết": "Khi bé có dấu hiệu nghẹt mũi, nhiều dịch nhầy, khó thở hoặc ngủ không yên do mũi bị tắc.",
+      "Lưu ý khi tư vấn": "Nếu bé có triệu chứng nặng kéo dài (sốt cao, khó thở nhiều), khuyên phụ huynh đưa bé đi khám."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Khách hỏi giá và ưu đãi",
+      "Nội dung chi tiết": "Giới thiệu giá hiện hành theo chương trình bán hàng, ưu đãi quà tặng hoặc combo nếu đang có.",
+      "Lưu ý khi tư vấn": "Đưa giá rõ ràng, tránh mập mờ; nếu có quà tặng thì nêu điều kiện áp dụng cụ thể."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Xử lý phản đối: Sợ làm đau bé",
+      "Nội dung chi tiết": "Đầu hút silicone mềm, thiết kế chuyên biệt cho mũi bé, thao tác bằng bóp tay nên phụ huynh chủ động lực hút.",
+      "Lưu ý khi tư vấn": "Giữ giọng trấn an, hướng dẫn thao tác đúng để phụ huynh tự tin dùng."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Xử lý phản đối: Khó vệ sinh",
+      "Nội dung chi tiết": "Các bộ phận tháo lắp được, dễ rửa và tiệt trùng; không dùng cơ chế lò xo bôi trơn nên hạn chế bám bẩn khó làm sạch.",
+      "Lưu ý khi tư vấn": "Hướng dẫn quy trình vệ sinh 3 bước thật ngắn để khách thấy đơn giản."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Kịch bản chốt tư vấn",
+      "Nội dung chi tiết": "Xác nhận nhu cầu của bé -> nhấn 2 lợi ích chính phù hợp trường hợp đó -> đề xuất gói mua + hỗ trợ sau bán.",
+      "Lưu ý khi tư vấn": "Không ép mua; tập trung đúng vấn đề khách đang gặp để tăng tỉ lệ chốt tự nhiên."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Mẫu tin nhắn cho nhóm Hot",
+      "Nội dung chi tiết": "Chào anh/chị {{ten_khach}}, em từ HikoBaby ạ. Em thấy bé đang gặp tình trạng {{van_de}} nên mình xử lý sớm sẽ giúp bé dễ thở và đỡ quấy hơn. Dụng cụ hút mũi HikoBaby dùng pít-tông không dầu, đầu silicone mềm, dễ vệ sinh và an toàn cho bé. Hôm nay bên em đang có ưu đãi + quà tặng sách 'Mẹ bình tĩnh, con an toàn'. Em lên đơn cho mình luôn để giao sớm nhé? Anh/chị cho em xin địa chỉ + người nhận ạ.",
+      "Lưu ý khi tư vấn": "Ưu tiên phản hồi nhanh, nhấn vào nhu cầu cấp bách và chốt đơn trong cuộc hội thoại hiện tại."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Mẫu tin nhắn cho nhóm Warm",
+      "Nội dung chi tiết": "Chào anh/chị {{ten_khach}}, cảm ơn mình đã quan tâm HikoBaby ạ. Với tình trạng {{van_de}}, sản phẩm hỗ trợ làm sạch dịch mũi nhẹ nhàng, giúp bé thở dễ hơn. Điểm nổi bật là pít-tông không dầu, 3 đầu hút theo độ tuổi, thiết kế chống trào ngược và dễ vệ sinh sau khi dùng. Nếu anh/chị muốn, em tư vấn nhanh theo tháng tuổi của bé để chọn cách dùng phù hợp nhất. Mình cho em xin tuổi bé, em hướng dẫn ngay 1-1 nhé ạ.",
+      "Lưu ý khi tư vấn": "Tập trung trao giá trị và hỏi thêm thông tin để cá nhân hóa tư vấn trước khi chốt."
+    },
+    {
+      "Câu hỏi/Chủ đề": "Mẫu tin nhắn cho nhóm Cold",
+      "Nội dung chi tiết": "Chào anh/chị {{ten_khach}}, em gửi anh/chị thông tin ngắn gọn về HikoBaby để mình tham khảo ạ: hỗ trợ hút dịch mũi cho bé dễ thở hơn, đầu hút silicone mềm không BPA, dễ tháo rửa và vệ sinh. Hiện bên em có quà tặng sách 'Mẹ bình tĩnh, con an toàn' cho khách đăng ký tư vấn. Khi nào cần, anh/chị chỉ cần nhắn 'TƯ VẤN', em hỗ trợ ngay ạ.",
+      "Lưu ý khi tư vấn": "Không ép chốt; giữ tương tác nhẹ nhàng, nuôi dưỡng bằng nội dung hữu ích và CTA mềm."
+    }
+  ]
+}
