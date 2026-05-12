@@ -335,6 +335,53 @@ body {
   color: #b91c1c;
 }
 
+.advisor-section {
+  padding: 0 0 56px;
+}
+
+.advisor-box {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+  display: grid;
+  gap: 10px;
+}
+
+.advisor-box h2 {
+  margin: 0;
+  font-size: clamp(1.4rem, 3vw, 1.8rem);
+}
+
+.advisor-box label {
+  font-weight: 600;
+  color: var(--primary-dark);
+}
+
+.advisor-box textarea {
+  width: 100%;
+  border: 1px solid #b9d5f2;
+  border-radius: 10px;
+  padding: 0.75rem 0.9rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: #ffffff;
+}
+
+.advisor-result {
+  margin-top: 6px;
+  padding: 14px;
+  border: 1px dashed #9fc3eb;
+  border-radius: 10px;
+  background: #f8fbff;
+}
+
+.advisor-meta {
+  margin: 0 0 8px;
+}
+
 .site-footer {
   background: var(--footer-bg);
   color: #cbd5e1;

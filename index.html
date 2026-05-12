@@ -123,10 +123,11 @@
       <section id="contact" class="lead-section">
         <div class="container lead-box">
           <div class="lead-intro">
-            <h2>Nhận ngay quà tặng sách “Mẹ bình tĩnh, con an toàn” miễn phí</h2>
+            <h2>Nhận tư vấn miễn phí 1-1 và ưu đãi riêng cho bé của bạn</h2>
             <p>
-              Để lại thông tin để nhận tư vấn và quà tặng. Thông tin sản phẩm và
-              chương trình quà tặng được cập nhật tại
+              Để lại thông tin để được chuyên viên tư vấn đúng tình trạng của bé
+              và nhận ưu đãi phù hợp. Thông tin sản phẩm và chương trình mới nhất
+              được cập nhật tại
               <a
                 href="https://www.hikobaby.vn/"
                 target="_blank"
@@ -179,6 +180,37 @@
           </form>
         </div>
       </section>
+
+      <section class="advisor-section">
+        <div class="container advisor-box">
+          <h2>Trợ lý tư vấn nhanh (Consultant Agent)</h2>
+          <p class="section-description">
+            Nhập câu hỏi của khách để hệ thống gợi ý câu trả lời dựa trên
+            `brain.db`.
+          </p>
+          <label for="customerQuestion">Câu hỏi khách hàng</label>
+          <textarea
+            id="customerQuestion"
+            rows="4"
+            placeholder="Ví dụ: Sản phẩm có đau không? Giá bao nhiêu?"
+          ></textarea>
+          <button id="generateReplyBtn" type="button" class="cta-button">
+            Gợi ý trả lời
+          </button>
+
+          <div id="advisorResult" class="advisor-result" hidden>
+            <p class="advisor-meta">
+              <strong>Độ tự tin:</strong> <span id="advisorConfidence"></span>
+            </p>
+            <p class="advisor-meta">
+              <strong>Nguồn đã dùng:</strong> <span id="advisorSources"></span>
+            </p>
+            <label for="advisorAnswer"><strong>Câu trả lời đề xuất</strong></label>
+            <textarea id="advisorAnswer" rows="8" readonly></textarea>
+          </div>
+          <p id="advisorStatus" class="form-status" aria-live="polite"></p>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
@@ -188,6 +220,7 @@
       </div>
     </footer>
 
+    <script src="consultant-agent.js"></script>
     <script>
       const SUPABASE_URL = "https://yfxofpfkqgftykijhfur.supabase.co";
       const SUPABASE_PUBLISHABLE_KEY =
@@ -198,6 +231,14 @@
       const leadForm = document.getElementById("leadForm");
       const submitBtn = document.getElementById("submitBtn");
       const formStatus = document.getElementById("formStatus");
+      const generateReplyBtn = document.getElementById("generateReplyBtn");
+      const customerQuestionInput = document.getElementById("customerQuestion");
+      const advisorStatus = document.getElementById("advisorStatus");
+      const advisorResult = document.getElementById("advisorResult");
+      const advisorAnswer = document.getElementById("advisorAnswer");
+      const advisorConfidence = document.getElementById("advisorConfidence");
+      const advisorSources = document.getElementById("advisorSources");
+      let consultantAgent = null;
 
       async function parseSupabaseError(response) {
         let detail = `HTTP ${response.status}`;
@@ -311,6 +352,58 @@
         }
       }
 
+      async function initConsultantAgent() {
+        try {
+          const response = await fetch("./brain.db.json");
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          const brain = await response.json();
+          consultantAgent = window.createConsultantAgent(brain);
+        } catch (error) {
+          // Fallback de su dung duoc khi mo truc tiep file local khong cho fetch json.
+          const fallbackBrain = {
+            knowledge: [
+              {
+                "Câu hỏi/Chủ đề": "HikoBaby là sản phẩm gì?",
+                "Nội dung chi tiết":
+                  "HikoBaby là dụng cụ hút mũi cho bé, hỗ trợ làm sạch dịch nhầy và đờm trong mũi để bé thở dễ hơn.",
+                "Lưu ý khi tư vấn":
+                  "Nhấn mạnh tính an toàn, dễ thao tác tại nhà và phù hợp cho phụ huynh có con nhỏ hay bị nghẹt mũi.",
+              },
+              {
+                "Câu hỏi/Chủ đề": "Ưu điểm nổi bật của HikoBaby",
+                "Nội dung chi tiết":
+                  "Thiết kế chống trào ngược, đầu hút silicone mềm mại, không chứa BPA, dễ vệ sinh và độ bền cao.",
+                "Lưu ý khi tư vấn":
+                  "So sánh ngắn gọn với sản phẩm lò xo: dễ bám bẩn, khó vệ sinh.",
+              },
+              {
+                "Câu hỏi/Chủ đề": "Khách hỏi giá và ưu đãi",
+                "Nội dung chi tiết":
+                  "Giới thiệu giá hiện hành theo chương trình bán hàng, ưu đãi quà tặng hoặc combo nếu đang có.",
+                "Lưu ý khi tư vấn":
+                  "Đưa giá rõ ràng, tránh mập mờ; nếu có quà tặng thì nêu điều kiện áp dụng cụ thể.",
+              },
+              {
+                "Câu hỏi/Chủ đề": "Kịch bản chốt tư vấn",
+                "Nội dung chi tiết":
+                  "Xác nhận nhu cầu của bé -> nhấn 2 lợi ích chính phù hợp -> đề xuất gói mua và hỗ trợ sau bán.",
+                "Lưu ý khi tư vấn":
+                  "Không ép mua; tập trung đúng vấn đề khách đang gặp để tăng tỉ lệ chốt tự nhiên.",
+              },
+              {
+                "Câu hỏi/Chủ đề": "Mẫu tin nhắn cho nhóm Hot",
+                "Nội dung chi tiết":
+                  "Chào anh/chị {{ten_khach}}, em từ HikoBaby ạ... Em lên đơn cho mình luôn để giao sớm nhé?",
+                "Lưu ý khi tư vấn":
+                  "Ưu tiên phản hồi nhanh, nhấn nhu cầu cấp bách và chốt trong cuộc hội thoại hiện tại.",
+              },
+            ],
+          };
+          consultantAgent = window.createConsultantAgent(fallbackBrain);
+          console.warn("Fallback brain loaded:", error);
+        }
+      }
+
       async function insertLead(fullName, phone, email, note, category) {
         const endpoint = `${SUPABASE_URL}/rest/v1/leads`;
         const headers = {
@@ -401,6 +494,35 @@
           submitBtn.textContent = "Gửi đăng ký";
         }
       });
+
+      generateReplyBtn.addEventListener("click", () => {
+        advisorStatus.textContent = "";
+        advisorResult.hidden = true;
+        const question = customerQuestionInput.value.trim();
+
+        if (!question) {
+          advisorStatus.textContent = "Vui lòng nhập câu hỏi khách hàng.";
+          advisorStatus.className = "form-status error";
+          return;
+        }
+        if (!consultantAgent) {
+          advisorStatus.textContent =
+            "Trợ lý chưa sẵn sàng. Vui lòng tải lại trang và thử lại.";
+          advisorStatus.className = "form-status error";
+          return;
+        }
+
+        const result = consultantAgent.reply(question, { topK: 3 });
+        advisorAnswer.value = result.answer;
+        advisorConfidence.textContent = result.confidence || "unknown";
+        advisorSources.textContent =
+          result.usedKnowledge?.map((x) => x.topic).join(" | ") || "Không có";
+        advisorResult.hidden = false;
+        advisorStatus.textContent = "Đã tạo câu trả lời gợi ý.";
+        advisorStatus.className = "form-status success";
+      });
+
+      initConsultantAgent();
     </script>
   </body>
 </html>
