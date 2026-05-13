@@ -24,22 +24,40 @@ function containsAny(text, keywords) {
 
 function computeRelevance(query, entry) {
   const q = normalizeText(query);
+  if (!q) return 0;
+
   const subject = normalizeText(entry["Câu hỏi/Chủ đề"]);
   const details = normalizeText(entry["Nội dung chi tiết"]);
   const notes = normalizeText(entry["Lưu ý khi tư vấn"]);
 
-  const queryTokens = q.split(" ").filter((t) => t.length > 1);
+  const stopWords = [
+    "la", "co", "cua", "cho", "be", "san", "pham", "dung", "cai", "nay", "duoc", 
+    "khong", "thi", "nhu", "the", "nao", "ve", "minh", "oi", "da", "em", "anh", 
+    "chi", "ban", "nha", "hay", "giu", "lam", "sao", "den", "voi", "o", "dau"
+  ];
+  const queryTokens = q.split(" ").filter((t) => t.length > 1 && !stopWords.includes(t));
   const uniqueTokens = [...new Set(queryTokens)];
+
+  if (uniqueTokens.length === 0) {
+    const allTokens = q.split(" ").filter(t => t.length > 1);
+    if (allTokens.length === 0) return 0;
+    uniqueTokens.push(...allTokens);
+  }
 
   let score = 0;
   for (const token of uniqueTokens) {
-    if (subject.includes(token)) score += 3;
-    if (details.includes(token)) score += 2;
+    if (subject.includes(token)) score += 8; // Even higher weight for subject
+    if (details.includes(token)) score += 3;
     if (notes.includes(token)) score += 1;
   }
 
-  // Bonus when subject almost directly matches query intent.
-  if (subject.includes(q) || q.includes(subject)) score += 5;
+  const subjectTokens = subject.split(" ");
+  const intersection = uniqueTokens.filter(t => subjectTokens.includes(t));
+  if (uniqueTokens.length > 0 && intersection.length / uniqueTokens.length >= 0.5) {
+    score += 15;
+  }
+
+  if (subject.includes(q) || q.includes(subject)) score += 10;
   return score;
 }
 
@@ -173,7 +191,7 @@ function buildBrandVoiceAnswer(question, hits, options = {}) {
       topic: h.entry["Câu hỏi/Chủ đề"],
       score: h.score,
     })),
-    confidence: hits[0].score >= 8 ? "high" : "medium",
+    confidence: hits[0]?.score >= 20 ? "high" : hits[0]?.score >= 10 ? "medium" : "low",
   };
 }
 
@@ -188,6 +206,13 @@ function createConsultantAgent(brain) {
      * @param {{ leadLevel?: "hot"|"warm"|"cold", topK?: number }} options
      */
     reply(question, options = {}) {
+      if (!question || !question.trim()) {
+        return {
+          answer: "Chào anh/chị, em có thể giúp gì cho bé nhà mình ạ?",
+          usedKnowledge: [],
+          confidence: "low"
+        };
+      }
       const topK = Number.isInteger(options.topK) ? options.topK : 3;
       const hits = retrieveKnowledge(question, brain, topK);
       return buildBrandVoiceAnswer(question, hits, {

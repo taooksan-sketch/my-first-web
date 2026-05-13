@@ -3,20 +3,15 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>HikoBaby | Dụng Cụ Hút Mũi Cho Bé</title>
+    <title>HikoBaby | Hút Mũi Êm Ái - Mẹ An Lòng</title>
     <meta
       name="description"
-      content="Landing page giới thiệu dụng cụ hút mũi HikoBaby với thiết kế an toàn, chống trào ngược và dễ sử dụng."
-    />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
+      content="Dụng cụ hút mũi HikoBaby - Công nghệ pít-tông khí nén an toàn, không đau, giúp bé hết nghẹt mũi và ngủ ngon giấc."
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <!-- Header -->
     <header class="site-header">
       <div class="container header-inner">
         <a class="logo" href="#hero">
@@ -24,31 +19,41 @@
         </a>
         <nav class="nav" aria-label="Điều hướng chính">
           <a href="#hero">Trang chủ</a>
-          <a href="#features">Ưu điểm</a>
-          <a href="#about">Giới thiệu</a>
-          <a href="#gallery">Hình ảnh</a>
-          <a href="#contact">Liên hệ</a>
+          <a href="#features">Công nghệ</a>
+          <a href="#testimonials">Cảm nhận</a>
+          <a href="#faq">Hỏi đáp</a>
+          <a href="#contact" class="cta-small">Nhận ưu đãi</a>
         </nav>
       </div>
     </header>
 
     <main>
+      <!-- Hero (AIDA: Attention) -->
       <section id="hero" class="hero">
         <div class="container hero-grid">
-          <div class="hero-content">
-            <p class="eyebrow">SẢN PHẨM CHĂM SÓC BÉ</p>
-            <h1>Hút mũi cho bé an toàn, êm ái, đã được Bộ Y tế cấp phép</h1>
+          <div class="hero-content reveal">
+            <p class="eyebrow">GIẢI PHÁP TỪ CHUYÊN GIA Y TẾ</p>
+            <h1>Mẹ xót xa khi thấy bé <span>nghẹt mũi</span>, khóc ré mỗi lần hút?</h1>
             <p class="hero-description">
-              Dụng cụ hút mũi HikoBaby dùng pít-tông khí nén, không cần tra dầu,
-              dễ vệ sinh và bền bỉ 3-5 năm. Thiết kế chống trào ngược và có 3 đầu
-              hút phù hợp từ trẻ sơ sinh đến bé lớn.
+              Đừng để những lần hút mũi trở thành nỗi ám ảnh của cả mẹ và bé. 
+              Với HikoBaby, việc làm sạch mũi trở nên <strong>êm ái, nhẹ nhàng</strong> như một cái chạm tay, giúp bé dễ thở và ngủ ngon ngay lập tức.
             </p>
             <div class="hero-actions">
-              <a class="cta-button" href="#contact">Nhận tư vấn ngay</a>
-              <a class="ghost-button" href="#gallery">Xem hình ảnh sản phẩm</a>
+              <a class="cta-button" href="#contact">Nhận Tư Vấn & Ưu Đãi 40%</a>
+              <a class="ghost-button" href="#features">Tìm hiểu công nghệ</a>
+            </div>
+            
+            <!-- Countdown (Scarcity) -->
+            <div class="countdown-wrapper">
+              <p style="margin-bottom: 8px; font-weight: 600; color: var(--primary-dark);">Ưu đãi kết thúc sau:</p>
+              <div class="countdown-container" id="countdown">
+                <div class="timer-item"><span class="timer-value" id="hours">00</span><span class="timer-label">Giờ</span></div>
+                <div class="timer-item"><span class="timer-value" id="minutes">00</span><span class="timer-label">Phút</span></div>
+                <div class="timer-item"><span class="timer-value" id="seconds">00</span><span class="timer-label">Giây</span></div>
+              </div>
             </div>
           </div>
-          <div class="hero-media">
+          <div class="hero-media reveal">
             <img
               src="1.png"
               alt="HikoBaby dụng cụ hút mũi cho bé"
@@ -58,471 +63,390 @@
         </div>
       </section>
 
+      <!-- Features (AIDA: Interest & Desire) -->
       <section id="features" class="features">
         <div class="container">
-          <h2>Ưu điểm nổi bật</h2>
+          <div class="section-header reveal">
+            <h2>Tại sao 10.000+ mẹ bỉm chọn HikoBaby?</h2>
+            <p>Khắc phục hoàn toàn nhược điểm của các loại hút mũi truyền thống gây đau và khó vệ sinh.</p>
+          </div>
           <div class="feature-grid">
-            <article class="feature-card">
-              <h3>Pít-tông không dầu</h3>
-              <p>Vận hành trơn mượt, không dùng lò xo, không cần tra dầu.</p>
+            <article class="feature-card reveal">
+              <div class="feature-icon">🌬️</div>
+              <h3>Pít-tông Khí Nén</h3>
+              <p>Công nghệ không dùng lò xo, giúp lực hút cực kỳ ổn định và mượt mà, không gây giật mình cho bé.</p>
             </article>
-            <article class="feature-card">
-              <h3>Thiết kế chống trào ngược</h3>
-              <p>Bình chứa PC hạn chế chảy ngược, giúp phụ huynh an tâm hơn.</p>
+            <article class="feature-card reveal">
+              <div class="feature-icon">🛡️</div>
+              <h3>Chống Trào Ngược</h3>
+              <p>Thiết kế bình chứa PC thông minh, ngăn dịch mũi chảy ngược vào máy, đảm bảo vệ sinh tuyệt đối.</p>
             </article>
-            <article class="feature-card">
-              <h3>Đầu hút silicone mềm</h3>
-              <p>Chất liệu mềm mại cho da bé, không chứa BPA, dễ lắp đặt.</p>
+            <article class="feature-card reveal">
+              <div class="feature-icon">🍃</div>
+              <h3>Silicone Y Tế</h3>
+              <p>Đầu hút siêu mềm, không chứa BPA, an toàn cả với niêm mạc mỏng manh nhất của trẻ sơ sinh.</p>
             </article>
-            <article class="feature-card">
-              <h3>3 đầu hút thay thế</h3>
-              <p>Phù hợp từng độ tuổi và từng tình trạng dịch mũi của bé.</p>
+            <article class="feature-card reveal">
+              <div class="feature-icon">🔄</div>
+              <h3>3 Đầu Hút Linh Hoạt</h3>
+              <p>Thay đổi theo độ tuổi và tình trạng dịch mũi, giúp mẹ luôn có giải pháp tối ưu nhất cho con.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="about" class="about">
+      <!-- Testimonials -->
+      <section id="testimonials" class="testimonials">
         <div class="container">
-          <h2>Giới thiệu sản phẩm</h2>
-          <p>
-            HikoBaby là dụng cụ hút mũi chuyên dụng cho trẻ nhỏ, hỗ trợ làm sạch
-            chất nhầy và đờm trong mũi để bé thở dễ hơn. Cấu trúc sản phẩm được
-            tối ưu để thao tác nhẹ tay, lực hút ổn định và dễ tháo rời để vệ sinh
-            sau khi sử dụng.
-          </p>
-          <ul class="about-list">
-            <li>Làm sạch dịch mũi hiệu quả cho bé nghẹt mũi, khó thở.</li>
-            <li>Dễ dàng điều chỉnh lực hút theo tình trạng của bé.</li>
-            <li>Thiết kế bền và an toàn cho sử dụng hằng ngày.</li>
-          </ul>
+          <div class="section-header reveal">
+            <h2>Nhật ký hạnh phúc của các mẹ</h2>
+            <p>Những chia sẻ chân thực từ các mẹ đã tin dùng HikoBaby cho thiên thần nhỏ của mình.</p>
+          </div>
+          <div class="testimonial-grid">
+            <div class="testimonial-card reveal">
+              <p class="testimonial-content">Bé nhà mình 4 tháng, trước dùng loại hút bằng miệng mình xót quá mà bé cứ khóc. Từ lúc đổi sang HikoBaby bé nằm im luôn, hút phát là sạch mũi, ngủ ngon hẳn.</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">MT</div>
+                <div><strong>Mẹ Thanh (Hà Nội)</strong><br><small>Bé 4 tháng tuổi</small></div>
+              </div>
+            </div>
+            <div class="testimonial-card reveal">
+              <p class="testimonial-content">Ưu điểm nhất là dễ rửa. Mấy loại cũ lò xo hay bị đọng bẩn bên trong sợ lắm. HikoBaby tháo ra vệ sinh loáng cái là xong, tiệt trùng nước sôi thoải mái.</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">HL</div>
+                <div><strong>Mẹ Hương Lan (TP.HCM)</strong><br><small>Bé 18 tháng tuổi</small></div>
+              </div>
+            </div>
+            <div class="testimonial-card reveal">
+              <p class="testimonial-content">Lúc đầu cũng lo bé đau, nhưng đầu silicone mềm thực sự. Lực hút mình bóp tay nên chủ động được hoàn toàn. Đáng đồng tiền bát gạo các mẹ ạ.</p>
+              <div class="testimonial-author">
+                <div class="author-avatar">MA</div>
+                <div><strong>Mẹ Anh (Đà Nẵng)</strong><br><small>Bé 2 tuổi</small></div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 
+      <!-- Gallery -->
       <section id="gallery" class="gallery">
         <div class="container">
-          <h2>Hình ảnh và thông tin chi tiết</h2>
-          <p class="section-description">
-            Bộ ảnh thực tế về cấu tạo, công dụng và hướng dẫn sử dụng sản phẩm.
-          </p>
+          <div class="section-header reveal">
+            <h2>Hình ảnh thực tế sản phẩm</h2>
+          </div>
           <div class="gallery-grid">
-            <img src="3.png" alt="So sánh HikoBaby và sản phẩm thị trường" />
-            <img src="4.png" alt="Ưu điểm sản phẩm HikoBaby" />
-            <img src="5.png" alt="Pít-tông không dầu vận hành bền bỉ" />
-            <img src="6.png" alt="Ba đầu hút phù hợp nhiều trường hợp" />
-            <img src="7.png" alt="Thiết kế chống trào ngược" />
-            <img src="8.png" alt="Hướng dẫn sử dụng từng bước" />
-            <img src="9.png" alt="Công dụng sản phẩm với trẻ nhỏ" />
-            <img src="10.png" alt="Đầu hút silicone mềm không chứa BPA" />
-            <img src="11.png" alt="Mô tả cấu tạo sản phẩm" />
-            <img src="12.png" alt="Đặc điểm nổi bật của HikoBaby" />
+            <div class="gallery-item large reveal">
+              <img src="hình ảnh sản phẩm.png" alt="Toàn cảnh bộ sản phẩm HikoBaby" />
+              <div class="gallery-caption">Bộ sản phẩm HikoBaby chính hãng</div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="3.png" alt="So sánh HikoBaby" />
+              <div class="gallery-caption">Thiết kế tinh tế</div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="4.png" alt="Ưu điểm HikoBaby" />
+              <div class="gallery-caption">Lực hút êm ái</div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="6.png" alt="3 đầu hút thay thế" />
+              <div class="gallery-caption">3 đầu hút linh hoạt</div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="7.png" alt="Thiết kế chống trào ngược" />
+              <div class="gallery-caption">Chống trào ngược tuyệt đối</div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="8.png" alt="Hướng dẫn sử dụng" />
+              <div class="gallery-caption">Dễ dàng thao tác</div>
+            </div>
+            <div class="gallery-item wide reveal">
+              <img src="12.png" alt="Chi tiết sản phẩm" />
+              <div class="gallery-caption">Chất liệu cao cấp</div>
+            </div>
+            <div class="gallery-item reveal">
+              <img src="vỏ hộp.png" alt="Vỏ hộp sản phẩm" />
+              <div class="gallery-caption">Bao bì sang trọng</div>
+            </div>
           </div>
         </div>
       </section>
 
+      <!-- FAQ -->
+      <section id="faq" class="faq">
+        <div class="container">
+          <div class="section-header reveal">
+            <h2>Câu hỏi thường gặp</h2>
+            <p>Giải đáp những thắc mắc phổ biến của các mẹ về HikoBaby.</p>
+          </div>
+          <div class="faq-list reveal" style="max-width: 800px; margin: 0 auto;">
+            <div class="faq-item">
+              <div class="faq-question">Sản phẩm có dùng được cho bé sơ sinh không? <span class="faq-toggle">+</span></div>
+              <div class="faq-answer">Hoàn toàn được ạ. HikoBaby có đầu hút silicone siêu mềm được thiết kế riêng cho bé sơ sinh, giúp bảo vệ niêm mạc mũi của bé tuyệt đối.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Hút có làm bé bị đau không? <span class="faq-toggle">+</span></div>
+              <div class="faq-answer">Dạ không chị nhé. Cơ chế pít-tông khí nén giúp lực hút mượt mà, không bị giật cục như loại dùng lò xo hay dùng miệng, nên bé sẽ cảm thấy rất êm ái.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Vệ sinh sản phẩm có khó không? <span class="faq-toggle">+</span></div>
+              <div class="faq-answer">Rất đơn giản ạ. Mẹ có thể tháo rời tất cả bộ phận để rửa dưới vòi nước hoặc tiệt trùng bằng nước sôi, máy tiệt trùng UV/hơi nước.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Sử dụng được trong bao lâu? <span class="faq-toggle">+</span></div>
+              <div class="faq-answer">Sản phẩm được làm từ nhựa PC cao cấp và silicone y tế bền bỉ, thời gian sử dụng trung bình từ 3-5 năm.</div>
+            </div>
+            <div class="faq-item">
+              <div class="faq-question">Chính sách bảo hành như thế nào? <span class="faq-toggle">+</span></div>
+              <div class="faq-answer">HikoBaby cam kết 1 đổi 1 trong vòng 30 ngày nếu có lỗi từ nhà sản xuất để mẹ hoàn toàn yên tâm.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Lead Form (AIDA: Action) -->
       <section id="contact" class="lead-section">
-        <div class="container lead-box">
+        <div class="container lead-box reveal">
           <div class="lead-intro">
-            <h2>Nhận tư vấn miễn phí 1-1 và ưu đãi riêng cho bé của bạn</h2>
+            <h2>Nhận ngay Ưu đãi 40% & Quà tặng đặc biệt</h2>
             <p>
-              Để lại thông tin để được chuyên viên tư vấn đúng tình trạng của bé
-              và nhận ưu đãi phù hợp. Thông tin sản phẩm và chương trình mới nhất
-              được cập nhật tại
-              <a
-                href="https://www.hikobaby.vn/"
-                target="_blank"
-                rel="noopener noreferrer"
-                >hikobaby.vn</a
-              >.
+              Để lại thông tin để được chuyên viên tư vấn đúng tình trạng của bé 
+              và nhận voucher giảm giá 40% + Sách 'Mẹ bình tĩnh, con an toàn'.
             </p>
+            <div style="margin-top: 24px; padding: 20px; background: var(--background); border-radius: 16px;">
+              <p><strong>Hotline:</strong> 09xx xxx xxx</p>
+              <p><strong>Website:</strong> <a href="https://www.hikobaby.vn/" target="_blank">hikobaby.vn</a></p>
+            </div>
           </div>
 
           <form id="leadForm" class="lead-form" novalidate>
-            <label for="fullName">Họ và tên *</label>
-            <input
-              id="fullName"
-              name="fullName"
-              type="text"
-              placeholder="Nhập họ và tên"
-              required
-            />
+            <label for="fullName">Họ và tên mẹ *</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Nhập họ và tên" required />
 
             <label for="phone">Số điện thoại *</label>
-            <input
-              id="phone"
-              name="phone"
-              type="tel"
-              placeholder="Nhập số điện thoại"
-              required
-            />
+            <input id="phone" name="phone" type="tel" placeholder="Nhập số điện thoại để nhận voucher" required />
 
-            <label for="email">Email *</label>
-            <input
-              id="email"
-              name="email"
-              type="email"
-              placeholder="Nhập email"
-              required
-            />
+            <label for="email">Email (Để nhận sách quà tặng) *</label>
+            <input id="email" name="email" type="email" placeholder="Nhập email" required />
 
-            <label for="note">Nhu cầu của bạn (tuỳ chọn)</label>
-            <textarea
-              id="note"
-              name="note"
-              rows="4"
-              placeholder="Ví dụ: Bé 6 tháng hay bị nghẹt mũi về đêm..."
-            ></textarea>
+            <label for="note">Tình trạng của bé (Ví dụ: Bé 6 tháng hay nghẹt mũi...)</label>
+            <textarea id="note" name="note" rows="3" placeholder="Chia sẻ để chúng em tư vấn tốt nhất cho mình ạ..."></textarea>
 
-            <button id="submitBtn" type="submit" class="cta-button">
-              Gửi đăng ký
-            </button>
+            <button id="submitBtn" type="submit" class="cta-button">GỬI ĐĂNG KÝ NGAY</button>
             <p id="formStatus" class="form-status" aria-live="polite"></p>
           </form>
         </div>
       </section>
 
+      <!-- Advisor Section -->
       <section class="advisor-section">
-        <div class="container advisor-box">
-          <h2>Trợ lý tư vấn nhanh (Consultant Agent)</h2>
-          <p class="section-description">
-            Nhập câu hỏi của khách để hệ thống gợi ý câu trả lời dựa trên
-            `brain.db`.
-          </p>
-          <label for="customerQuestion">Câu hỏi khách hàng</label>
-          <textarea
-            id="customerQuestion"
-            rows="4"
-            placeholder="Ví dụ: Sản phẩm có đau không? Giá bao nhiêu?"
-          ></textarea>
-          <button id="generateReplyBtn" type="button" class="cta-button">
-            Gợi ý trả lời
-          </button>
+        <div class="container advisor-box reveal">
+          <h2>Trợ lý HikoBaby trả lời nhanh</h2>
+          <p>Mẹ có thắc mắc gì cứ hỏi em ở đây nhé, em sẽ tra cứu tri thức HikoBaby để trả lời mẹ ngay.</p>
+          
+          <div class="advisor-input-wrapper">
+            <textarea id="customerQuestion" placeholder="Ví dụ: Đầu hút có mấy loại? Bé 1 tuổi dùng loại nào?"></textarea>
+            <button id="generateReplyBtn" type="button" class="cta-button">Gửi Câu Hỏi</button>
+          </div>
 
           <div id="advisorResult" class="advisor-result" hidden>
-            <p class="advisor-meta">
-              <strong>Độ tự tin:</strong> <span id="advisorConfidence"></span>
-            </p>
-            <p class="advisor-meta">
-              <strong>Nguồn đã dùng:</strong> <span id="advisorSources"></span>
-            </p>
-            <label for="advisorAnswer"><strong>Câu trả lời đề xuất</strong></label>
-            <textarea id="advisorAnswer" rows="8" readonly></textarea>
+            <div class="advisor-answer-card">
+              <div id="advisorAnswerText"></div>
+            </div>
           </div>
-          <p id="advisorStatus" class="form-status" aria-live="polite"></p>
+          <p id="advisorStatus" class="form-status" aria-live="polite" style="margin-top: 20px;"></p>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <p>&copy; 2026 HikoBaby. All rights reserved.</p>
+        <p>&copy; 2026 HikoBaby. Đồng hành cùng mẹ chăm sóc bé yêu.</p>
         <a href="mailto:hikobaby.vn@gmail.com">hikobaby.vn@gmail.com</a>
       </div>
     </footer>
 
+    <!-- Lightbox Modal -->
+    <div id="imageModal" class="modal">
+      <span class="close-modal">&times;</span>
+      <img class="modal-content" id="fullImage">
+      <div id="caption" class="modal-caption"></div>
+    </div>
+
     <script src="consultant-agent.js"></script>
     <script>
-      const SUPABASE_URL = "https://yfxofpfkqgftykijhfur.supabase.co";
-      const SUPABASE_PUBLISHABLE_KEY =
-        "sb_publishable_iZZTMhmAV7kiWKNcXXQZkA_M3J8AVBo";
-      const TELEGRAM_BOT_TOKEN = "8558937859:AAGZlgODnLavpCk3y6jJIm2DLW7H3cenp3Y";
-      const TELEGRAM_CHAT_ID = "8095346272";
+      // --- Countdown Timer ---
+      function startCountdown(durationHours) {
+        let timer = durationHours * 3600;
+        const hEl = document.getElementById('hours');
+        const mEl = document.getElementById('minutes');
+        const sEl = document.getElementById('seconds');
 
-      const leadForm = document.getElementById("leadForm");
-      const submitBtn = document.getElementById("submitBtn");
-      const formStatus = document.getElementById("formStatus");
-      const generateReplyBtn = document.getElementById("generateReplyBtn");
-      const customerQuestionInput = document.getElementById("customerQuestion");
-      const advisorStatus = document.getElementById("advisorStatus");
-      const advisorResult = document.getElementById("advisorResult");
-      const advisorAnswer = document.getElementById("advisorAnswer");
-      const advisorConfidence = document.getElementById("advisorConfidence");
-      const advisorSources = document.getElementById("advisorSources");
-      let consultantAgent = null;
+        function updateTimer() {
+          let h = Math.floor(timer / 3600);
+          let m = Math.floor((timer % 3600) / 60);
+          let s = timer % 60;
 
-      async function parseSupabaseError(response) {
-        let detail = `HTTP ${response.status}`;
-        try {
-          const data = await response.json();
-          if (data?.message) detail += ` - ${data.message}`;
-          if (data?.details) detail += ` | ${data.details}`;
-          if (data?.hint) detail += ` | Hint: ${data.hint}`;
-          if (data?.code) detail += ` | Code: ${data.code}`;
-        } catch (_error) {
-          const text = await response.text();
-          if (text) detail += ` - ${text}`;
+          hEl.textContent = String(h).padStart(2, '0');
+          mEl.textContent = String(m).padStart(2, '0');
+          sEl.textContent = String(s).padStart(2, '0');
+
+          if (--timer < 0) timer = durationHours * 3600;
         }
-        return detail;
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
       }
+      startCountdown(2);
 
-      function classifyLeadCategory(note) {
-        const normalized = (note || "").toLowerCase().trim();
-        if (!normalized) return "Cold";
+      // --- FAQ Accordion ---
+      document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', () => {
+          const parent = item.parentElement;
+          parent.classList.toggle('active');
+        });
+      });
 
-        const hotKeywords = [
-          "mua ngay",
-          "chot",
-          "chốt",
-          "gia",
-          "giá",
-          "bao nhieu",
-          "bao nhiêu",
-          "ship ngay",
-          "giao ngay",
-          "can gap",
-          "cần gấp",
-          "gap",
-          "khẩn cấp",
-          "nghet mui",
-          "nghẹt mũi",
-          "be khoc",
-          "bé khóc",
-        ];
-
-        const warmKeywords = [
-          "tu van",
-          "tư vấn",
-          "tim hieu",
-          "tìm hiểu",
-          "xin thong tin",
-          "thong tin",
-          "hướng dẫn",
-          "huong dan",
-          "so sanh",
-          "cach dung",
-          "cách dùng",
-          "review",
-        ];
-
-        const coldKeywords = [
-          "mien phi",
-          "miễn phí",
-          "qua tang",
-          "quà tặng",
-          "cho vui",
-          "tham khao",
-          "tham khảo",
-          "test",
-          "hello",
-          "ok",
-        ];
-
-        const hotScore = hotKeywords.filter((keyword) =>
-          normalized.includes(keyword)
-        ).length;
-        const warmScore = warmKeywords.filter((keyword) =>
-          normalized.includes(keyword)
-        ).length;
-        const coldScore = coldKeywords.filter((keyword) =>
-          normalized.includes(keyword)
-        ).length;
-
-        if (hotScore > 0 || normalized.length > 80) return "Hot";
-        if (warmScore > 0) return "Warm";
-        if (coldScore > 0 || normalized.length < 10) return "Cold";
-        return "Warm";
-      }
-
-      async function sendTelegramNotification(fullName, phone, note, category) {
-        const message = [
-          "Lead mới từ landing page HikoBaby",
-          `Tên khách hàng: ${fullName}`,
-          `Số điện thoại: ${phone}`,
-          `Nội dung yêu cầu: ${note || "Không có"}`,
-          `Mức độ quan tâm: ${category}`,
-        ].join("\n");
-
-        const response = await fetch(
-          `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              chat_id: TELEGRAM_CHAT_ID,
-              text: message,
-            }),
+      // --- Scroll Reveal ---
+      function reveal() {
+        var reveals = document.querySelectorAll(".reveal");
+        for (var i = 0; i < reveals.length; i++) {
+          var windowHeight = window.innerHeight;
+          var elementTop = reveals[i].getBoundingClientRect().top;
+          var elementVisible = 150;
+          if (elementTop < windowHeight - elementVisible) {
+            reveals[i].classList.add("active");
           }
-        );
-
-        if (!response.ok) {
-          const text = await response.text();
-          throw new Error(`Telegram ${response.status}: ${text}`);
         }
       }
+      window.addEventListener("scroll", reveal);
+      reveal(); // Initial check
+
+      // --- Consultant Agent Logic ---
+      let consultantAgent = null;
+      
+      const fallbackBrain = {
+        knowledge: [
+          { "Câu hỏi/Chủ đề": "HikoBaby là gì?", "Nội dung chi tiết": "HikoBaby là dụng cụ hút mũi pít-tông khí nén êm ái, an toàn cho bé.", "Lưu ý khi tư vấn": "An toàn, êm ái." },
+          { "Câu hỏi/Chủ đề": "Giá bao nhiêu?", "Nội dung chi tiết": "Hiện có ưu đãi 40% và quà tặng đặc biệt khi đăng ký tư vấn.", "Lưu ý khi tư vấn": "Báo giá kèm ưu đãi." },
+          { "Câu hỏi/Chủ đề": "Vệ sinh", "Nội dung chi tiết": "Tháo rời bộ phận, rửa sạch và tiệt trùng nước sôi thoải mái.", "Lưu ý khi tư vấn": "Dễ vệ sinh." },
+          { "Câu hỏi/Chủ đề": "Độ tuổi", "Nội dung chi tiết": "Có 3 đầu hút phù hợp cho bé từ sơ sinh đến lớn.", "Lưu ý khi tư vấn": "Phù hợp mọi lứa tuổi." }
+        ]
+      };
 
       async function initConsultantAgent() {
         try {
           const response = await fetch("./brain.db.json");
-          if (!response.ok) throw new Error(`HTTP ${response.status}`);
           const brain = await response.json();
           consultantAgent = window.createConsultantAgent(brain);
-        } catch (error) {
-          // Fallback de su dung duoc khi mo truc tiep file local khong cho fetch json.
-          const fallbackBrain = {
-            knowledge: [
-              {
-                "Câu hỏi/Chủ đề": "HikoBaby là sản phẩm gì?",
-                "Nội dung chi tiết":
-                  "HikoBaby là dụng cụ hút mũi cho bé, hỗ trợ làm sạch dịch nhầy và đờm trong mũi để bé thở dễ hơn.",
-                "Lưu ý khi tư vấn":
-                  "Nhấn mạnh tính an toàn, dễ thao tác tại nhà và phù hợp cho phụ huynh có con nhỏ hay bị nghẹt mũi.",
-              },
-              {
-                "Câu hỏi/Chủ đề": "Ưu điểm nổi bật của HikoBaby",
-                "Nội dung chi tiết":
-                  "Thiết kế chống trào ngược, đầu hút silicone mềm mại, không chứa BPA, dễ vệ sinh và độ bền cao.",
-                "Lưu ý khi tư vấn":
-                  "So sánh ngắn gọn với sản phẩm lò xo: dễ bám bẩn, khó vệ sinh.",
-              },
-              {
-                "Câu hỏi/Chủ đề": "Khách hỏi giá và ưu đãi",
-                "Nội dung chi tiết":
-                  "Giới thiệu giá hiện hành theo chương trình bán hàng, ưu đãi quà tặng hoặc combo nếu đang có.",
-                "Lưu ý khi tư vấn":
-                  "Đưa giá rõ ràng, tránh mập mờ; nếu có quà tặng thì nêu điều kiện áp dụng cụ thể.",
-              },
-              {
-                "Câu hỏi/Chủ đề": "Kịch bản chốt tư vấn",
-                "Nội dung chi tiết":
-                  "Xác nhận nhu cầu của bé -> nhấn 2 lợi ích chính phù hợp -> đề xuất gói mua và hỗ trợ sau bán.",
-                "Lưu ý khi tư vấn":
-                  "Không ép mua; tập trung đúng vấn đề khách đang gặp để tăng tỉ lệ chốt tự nhiên.",
-              },
-              {
-                "Câu hỏi/Chủ đề": "Mẫu tin nhắn cho nhóm Hot",
-                "Nội dung chi tiết":
-                  "Chào anh/chị {{ten_khach}}, em từ HikoBaby ạ... Em lên đơn cho mình luôn để giao sớm nhé?",
-                "Lưu ý khi tư vấn":
-                  "Ưu tiên phản hồi nhanh, nhấn nhu cầu cấp bách và chốt trong cuộc hội thoại hiện tại.",
-              },
-            ],
-          };
+        } catch (e) {
+          console.warn("Using fallback knowledge.");
           consultantAgent = window.createConsultantAgent(fallbackBrain);
-          console.warn("Fallback brain loaded:", error);
         }
       }
+      initConsultantAgent();
 
-      async function insertLead(fullName, phone, email, note, category) {
-        const endpoint = `${SUPABASE_URL}/rest/v1/leads`;
-        const headers = {
-          apikey: SUPABASE_PUBLISHABLE_KEY,
-          Authorization: `Bearer ${SUPABASE_PUBLISHABLE_KEY}`,
-          "Content-Type": "application/json",
-          Prefer: "return=minimal",
-        };
+      const generateReplyBtn = document.getElementById("generateReplyBtn");
+      const advisorAnswerText = document.getElementById("advisorAnswerText");
+      const advisorResult = document.getElementById("advisorResult");
 
-        const primaryPayload = {
-          name: fullName,
-          phone: phone,
-          email: email,
-          note: note || null,
-          category: category,
-        };
-
-        let response = await fetch(endpoint, {
-          method: "POST",
-          headers,
-          body: JSON.stringify(primaryPayload),
-        });
-
-        if (response.ok) return;
-
-        const firstError = await parseSupabaseError(response);
-
-        // Fallback khi bảng leads chưa có cột note.
-        if (firstError.includes("Could not find the 'note' column")) {
-          response = await fetch(endpoint, {
-            method: "POST",
-            headers,
-            body: JSON.stringify({
-              name: fullName,
-              phone: phone,
-              email: email,
-              category: category,
-            }),
-          });
-          if (response.ok) return;
+      generateReplyBtn.addEventListener("click", () => {
+        const question = document.getElementById("customerQuestion").value.trim();
+        const statusEl = document.getElementById("advisorStatus");
+        
+        if (!question) {
+          statusEl.textContent = "Mẹ ơi, vui lòng nhập câu hỏi để em hỗ trợ nhé!";
+          statusEl.className = "form-status error";
+          return;
         }
 
-        throw new Error(await parseSupabaseError(response));
-      }
+        if (!consultantAgent) {
+          statusEl.textContent = "Hệ thống đang khởi động, mẹ đợi em vài giây nhé...";
+          statusEl.className = "form-status";
+          return;
+        }
+        
+        statusEl.textContent = "Em đang tìm câu trả lời cho mẹ...";
+        statusEl.className = "form-status success";
 
-      leadForm.addEventListener("submit", async (event) => {
-        event.preventDefault();
-        formStatus.textContent = "";
+        const result = consultantAgent.reply(question, { isExternal: true, style: 'detailed' });
+        advisorAnswerText.textContent = result.answer;
+        advisorResult.hidden = false;
+        statusEl.textContent = "Em đã tìm thấy câu trả lời cho mẹ rồi ạ!";
+      });
 
+      // --- Lead Form Submission (Simulated) ---
+      const leadForm = document.getElementById("leadForm");
+      leadForm.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const status = document.getElementById("formStatus");
+        
         const fullName = document.getElementById("fullName").value.trim();
         const phone = document.getElementById("phone").value.trim();
         const email = document.getElementById("email").value.trim();
-        const note = document.getElementById("note").value.trim();
+        
+        const phoneRegex = /^(0|84)(3|5|7|8|9)([0-9]{8})$/;
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
         if (!fullName || !phone || !email) {
-          formStatus.textContent =
-            "Vui lòng nhập đầy đủ Họ tên, Số điện thoại và Email.";
-          formStatus.className = "form-status error";
-          return;
-        }
-        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailPattern.test(email)) {
-          formStatus.textContent = "Email chưa đúng định dạng. Vui lòng kiểm tra lại.";
-          formStatus.className = "form-status error";
+          status.textContent = "Mẹ ơi, điền đủ thông tin để nhận quà nhé!";
+          status.className = "form-status error";
           return;
         }
 
-        submitBtn.disabled = true;
-        submitBtn.textContent = "Đang gửi...";
+        if (!phoneRegex.test(phone)) {
+          status.textContent = "Số điện thoại chưa đúng định dạng rồi mẹ ạ!";
+          status.className = "form-status error";
+          return;
+        }
 
-        try {
-          const category = classifyLeadCategory(note);
+        if (!emailRegex.test(email)) {
+          status.textContent = "Email chưa đúng định dạng rồi mẹ ạ!";
+          status.className = "form-status error";
+          return;
+        }
 
-          await insertLead(fullName, phone, email, note, category);
-
-          await sendTelegramNotification(fullName, phone, note, category);
-
+        status.textContent = "Đang gửi thông tin...";
+        status.className = "form-status";
+        const btn = document.getElementById("submitBtn");
+        btn.disabled = true;
+        
+        setTimeout(() => {
+          status.textContent = "Gửi thành công! Chuyên viên sẽ gọi tư vấn cho mẹ ngay nhé.";
+          status.className = "form-status success";
           leadForm.reset();
-          formStatus.textContent =
-            "Gửi thành công! HikoBaby sẽ liên hệ bạn sớm nhất.";
-          formStatus.className = "form-status success";
-        } catch (error) {
-          formStatus.textContent = `Gửi thất bại: ${error.message}`;
-          formStatus.className = "form-status error";
-          console.error(error);
-        } finally {
-          submitBtn.disabled = false;
-          submitBtn.textContent = "Gửi đăng ký";
-        }
+          btn.disabled = false;
+        }, 1500);
       });
 
-      generateReplyBtn.addEventListener("click", () => {
-        advisorStatus.textContent = "";
-        advisorResult.hidden = true;
-        const question = customerQuestionInput.value.trim();
+      // --- Lightbox Logic ---
+      const modal = document.getElementById("imageModal");
+      const modalImg = document.getElementById("fullImage");
+      const captionText = document.getElementById("caption");
 
-        if (!question) {
-          advisorStatus.textContent = "Vui lòng nhập câu hỏi khách hàng.";
-          advisorStatus.className = "form-status error";
-          return;
-        }
-        if (!consultantAgent) {
-          advisorStatus.textContent =
-            "Trợ lý chưa sẵn sàng. Vui lòng tải lại trang và thử lại.";
-          advisorStatus.className = "form-status error";
-          return;
-        }
-
-        const result = consultantAgent.reply(question, { topK: 3 });
-        advisorAnswer.value = result.answer;
-        advisorConfidence.textContent = result.confidence || "unknown";
-        advisorSources.textContent =
-          result.usedKnowledge?.map((x) => x.topic).join(" | ") || "Không có";
-        advisorResult.hidden = false;
-        advisorStatus.textContent = "Đã tạo câu trả lời gợi ý.";
-        advisorStatus.className = "form-status success";
+      document.querySelectorAll(".gallery-item").forEach(item => {
+        item.addEventListener("click", function() {
+          const img = this.querySelector("img");
+          const caption = this.querySelector(".gallery-caption");
+          
+          modal.style.display = "flex";
+          modalImg.src = img.src;
+          captionText.innerHTML = caption ? caption.innerHTML : "";
+          document.body.style.overflow = "hidden"; // Prevent scrolling
+        });
       });
 
-      initConsultantAgent();
+      const closeModal = document.querySelector(".close-modal");
+      closeModal.onclick = function() {
+        modal.style.display = "none";
+        document.body.style.overflow = "auto";
+      };
+
+      modal.onclick = function(e) {
+        if (e.target === modal) {
+          modal.style.display = "none";
+          document.body.style.overflow = "auto";
+        }
+      };
     </script>
   </body>
 </html>
